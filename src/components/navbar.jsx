@@ -5,43 +5,39 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "@/pages/home";
+import Home from "@/pages/Home";
 import About from "@/pages/about";
+import Rumah from "@/pages/rumah/rumah";
+import Penghuni from "@/pages/penghuni/Penghuni";
 
 function Navbar() {
   return (
-    <Router>
+    <div>
       <nav className="border-b shadow-sm">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="text-xl font-bold">MyApp</div>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink className="px-4 py-2 hover:underline">
-                  <Link to="/home">Home</Link>
-                </NavigationMenuLink>
+                  <NavigationMenuLink className="px-4 py-2" asChild >
+                    <Link to="/penghuni">Penghuni</Link>
+                  </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className="px-4 py-2 hover:underline">
-                  <Link to="/about">About</Link>
-                </NavigationMenuLink>
+                  <NavigationMenuLink className="px-4 py-2" asChild>
+                    <Link to="/rumah">Rumah</Link>
+                  </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink className="px-4 py-2 hover:underline">
-                  <Link to="/home">Home</Link>
-                </NavigationMenuLink>
+                  <NavigationMenuLink className="px-4 py-2" asChild>
+                    <Link to="/home">Home</Link>
+                  </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
       </nav>
-      <div className="p-4">
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </div>
-    </Router>
+    </div>
   );
 }
 
