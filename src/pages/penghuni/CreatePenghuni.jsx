@@ -1,3 +1,10 @@
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -58,12 +65,18 @@ export default function CreatePenghuni() {
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="status_penghuni">Status Penghuni</Label>
-                <Input
-                  id="status_penghuni"
-                  name="status_penghuni"
-                  onChange={(e) => setInputStatusHuni(e.target.value)}
+                <Select
+                  onValueChange={(value) => setStatusHuni(value)}
                   required
-                />
+                >
+                  <SelectTrigger id="status_perkawinan" className="w-full">
+                    <SelectValue placeholder="Pilih status huni" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="tetap">Tetap</SelectItem>
+                    <SelectItem value="kontrak">Kontrak</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="nomor_telepon">No Telepon</Label>
@@ -76,12 +89,18 @@ export default function CreatePenghuni() {
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="status_perkawinan">Status Perkawinan</Label>
-                <Input
-                  id="status_perkawinan"
-                  name="status_perkawinan"
-                  onChange={(e) => setInputStausKawin(e.target.value)}
+                <Select
+                  onValueChange={(value) => setStatusKawin(value)}
                   required
-                />
+                >
+                  <SelectTrigger id="status_perkawinan" className="w-full">
+                    <SelectValue placeholder="Pilih status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="menikah">Menikah</SelectItem>
+                    <SelectItem value="belum menikah">Belum Menikah</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               {/* <div className="grid gap-2">
                 <Label htmlFor="foto_ktp">Foto KTP</Label>
