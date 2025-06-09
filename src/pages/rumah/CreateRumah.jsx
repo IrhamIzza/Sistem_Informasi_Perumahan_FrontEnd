@@ -22,22 +22,16 @@ import { useNavigate } from "react-router-dom";
 
 export default function CreateRumah() {
   const navigate = useNavigate();
-  const [inputNama, setInputNama] = useState("");
-  const [inputStatusHuni, setInputStatusHuni] = useState("");
-  const [inputNoTel, setInputNoTel] = useState("");
-  const [inputStausKawin, setInputStausKawin] = useState("");
+  const [inputNoRumah, setnputNoRumah] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     try {
        setLoading(true)
-      await axios.post("http://localhost:8000/api/penghuni", {
-        nama: inputNama,
-        status_penghuni: inputStatusHuni,
-        nomor_telepon: inputNoTel,
-        status_perkawinan: inputStausKawin,
+      await axios.post("http://localhost:8000/api/rumah", {
+        nomer_rumah: inputNoRumah,
       });
-      navigate("/penghuni");
+      navigate("/rumah");
     } catch (error) {
       console.log(error);
     }
@@ -46,71 +40,26 @@ export default function CreateRumah() {
     <div className="flex ">
       <Card className="mx-auto w-full max-w-md">
         <CardHeader>
-          <CardTitle>Create Penghuni</CardTitle>
+          <CardTitle>Create Rumah</CardTitle>
           <CardDescription>
-            Isilah Nama, No. Telepon, Status Huni, dan lainnya
+            Isilah No. rumah, Status Huni
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-3">
               <div className="grid gap-2">
-                <Label htmlFor="nama">Nama</Label>
+                <Label htmlFor="nama">No Rumah</Label>
                 <Input
                   id="nama"
                   name="nama"
-                  onChange={(e) => setInputNama(e.target.value)}
+                  onChange={(e) => setnputNoRumah(e.target.value)}
                   required
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="status_penghuni">Status Penghuni</Label>
-                <Select
-                  onValueChange={(value) => setInputStatusHuni(value)}
-                  required
-                >
-                  <SelectTrigger id="status_perkawinan" className="w-full">
-                    <SelectValue placeholder="Pilih status huni" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="tetap">Tetap</SelectItem>
-                    <SelectItem value="kontrak">Kontrak</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label htmlFor="status_rumah">Status Rumah</Label>
               </div>
-              <div className="grid gap-2">
-                <Label htmlFor="nomor_telepon">No Telepon</Label>
-                <Input
-                  id="nomor_telepon"
-                  name="nomor_telepon"
-                  onChange={(e) => setInputNoTel(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="status_perkawinan">Status Perkawinan</Label>
-                <Select
-                  onValueChange={(value) => setInputStausKawin(value)}
-                  required
-                >
-                  <SelectTrigger id="status_perkawinan" className="w-full">
-                    <SelectValue placeholder="Pilih status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="menikah">Menikah</SelectItem>
-                    <SelectItem value="belum menikah">Belum Menikah</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              {/* <div className="grid gap-2">
-                <Label htmlFor="foto_ktp">Foto KTP</Label>
-                <Input
-                  id="foto_ktp"
-                  name="foto_ktp"
-                  type="file"
-                  onChange={onChange}
-                />
-              </div> */}
             </div>
             {loading ? <p>loading....</p> : null}
           </form>

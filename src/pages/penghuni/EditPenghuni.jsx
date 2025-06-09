@@ -91,7 +91,7 @@ export default function EditPenghuni() {
                   onValueChange={(value) => setStatusHuni(value)}
                   required
                 >
-                  <SelectTrigger id="status_perkawinan" className="w-full">
+                  <SelectTrigger id="status_penghuni" className="w-full">
                     <SelectValue placeholder="Pilih status huni" />
                   </SelectTrigger>
                   <SelectContent>

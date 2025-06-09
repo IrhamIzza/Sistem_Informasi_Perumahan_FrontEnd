@@ -5,15 +5,21 @@ import Penghuni from "./pages/penghuni/Penghuni";
 import Rumah from "./pages/rumah/Rumah";
 import About from "./pages/about";
 import CreatePenghuni from "./pages/penghuni/CreatePenghuni";
+import EditPenghuni from "./pages/penghuni/EditPenghuni";
+import CreateRumah from "./pages/rumah/CreateRumah";
+import EditRumah from "./pages/rumah/EditRumah";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <div className="p-4">
+      <div className="p-4 md:px-16">
         <Routes>
           <Route path="/penghuni" element={<Penghuni />} />
           <Route path="/penghuni/create" element={<CreatePenghuni />} />
+          <Route path="/penghuni/edit/:id" element={<EditPenghuni />} />
+          <Route path="/rumah/create" element={<CreateRumah />} />
+          <Route path="/rumah/edit/:id" element={<EditRumah />} />
           <Route path="/rumah" element={<Rumah />} />
           <Route path="/about" element={<About />} />
         </Routes>
