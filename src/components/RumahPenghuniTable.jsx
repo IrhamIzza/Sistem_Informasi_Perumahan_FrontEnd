@@ -12,16 +12,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function MyTable({}) {
-  const [rumah, setRumah] = useState([]);
+  const [penghuniRumah, setPenghuniRumah] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchRumah = async () => {
+  const fetchData = async () => {
     try {
       setLoading(true);
-      setRumah([])
-      const response = await axios.get("http://localhost:8000/api/rumah");
+      setPenghuniRumah([]);
+      const response = await axios.get("http://localhost:8000/api/penghuni-rumah");
       const data = response.data;
-      setRumah(data);
+      setPenghuniRumah(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -30,16 +30,16 @@ export default function MyTable({}) {
   };
 
   useEffect(() => {
-    fetchRumah();
+    fetchData();
   }, []);
 
-  if (loading) return <p>Loading data rumah...</p>;
+  if (loading) return <p>Loading data Penghuni Rumah...</p>;
 
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:8000/api/rumah/${id}`);
-      fetchRumah();
+      await axios.delete(`http://localhost:8000/api/penghuni-rumah/${id}`);
+      fetchData();
     } catch (error) {
       console.log(error);
     } finally {
@@ -54,22 +54,21 @@ export default function MyTable({}) {
           <TableHead className="text-center">ID</TableHead>
           <TableHead className="text-center">Nama</TableHead>
           <TableHead className="text-center">Status Huni</TableHead>
+          <TableHead className="text-center">Nomer Rumah</TableHead>
           <TableHead className="text-center">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody className="text-center">
-        {rumah.map((item) => (
+        {penghuniRumah.map((item) => (
           <TableRow key={item.id}>
             <TableCell>{item.id}</TableCell>
-            <TableCell>{item.nomer_rumah}</TableCell>
-            <TableCell>{item.status_huni}</TableCell>
+            <TableCell>{item.penghuni.nama}</TableCell>
+            <TableCell>{item.penghuni.status_penghuni}</TableCell>
+            <TableCell>{item.rumah.nomer_rumah}</TableCell>
             <TableCell className="flex">
               <div className="flex gap-1 mx-auto">
                 <Button>
                   <Link to={`edit/${item.id}`}>Edit</Link>
-                </Button>
-                <Button>
-                  <Link to={`penghuni-rumah/${item.id}/${item.nomer_rumah}`}>Penghuni</Link>
                 </Button>
                 <Button
                   onClick={() => handleDelete(item.id)}

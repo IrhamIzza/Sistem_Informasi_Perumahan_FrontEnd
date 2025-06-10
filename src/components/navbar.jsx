@@ -30,7 +30,17 @@ function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                   <NavigationMenuLink className="px-4 py-2" asChild>
-                    <Link to="/home">Home</Link>
+                    <Link to="/pembayaran">Pembayaran</Link>
+                  </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                  <NavigationMenuLink className="px-4 py-2" asChild>
+                    <Link to="/pengeluaran">Pengeluaran</Link>
+                  </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                  <NavigationMenuLink className="px-4 py-2" asChild>
+                    <Link to="/laporan">Laporan</Link>
                   </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>

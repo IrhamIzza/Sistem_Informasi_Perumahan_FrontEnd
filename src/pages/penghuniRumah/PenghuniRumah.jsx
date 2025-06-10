@@ -1,12 +1,12 @@
-import MyTable from "@/components/PenghuniTable";
+import MyTable from "@/components/RumahPenghuniTable";
 import { Button } from "@/components/ui/button";
 import { Link, Route, Routes } from "react-router-dom";
 
-function Penghuni() {
+function PenghuniRumah() {
   return (
     <div>
       <div className="p-3">
-        <h1 className="font-bold text-3xl text-center">TABEL PENGHUNI</h1>
+        <h1 className="font-bold text-3xl text-center">TABEL PENGHUNI RUMAH</h1>
       </div>
       <Button className="bg-zinc-500" size="sm">
         <Link to="create">Create</Link>
@@ -16,4 +16,4 @@ function Penghuni() {
   );
 }
 
-export default Penghuni;
+export default PenghuniRumah;

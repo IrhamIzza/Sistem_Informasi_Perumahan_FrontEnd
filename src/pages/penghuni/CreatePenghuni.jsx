@@ -43,8 +43,8 @@ export default function CreatePenghuni() {
     }
   };
   return (
-    <>
-      <Card className="w-full max-w-sm">
+    <div className="flex ">
+      <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle>Create Penghuni</CardTitle>
           <CardDescription>
@@ -66,7 +66,7 @@ export default function CreatePenghuni() {
               <div className="grid gap-2">
                 <Label htmlFor="status_penghuni">Status Penghuni</Label>
                 <Select
-                  onValueChange={(value) => setStatusHuni(value)}
+                  onValueChange={(value) => setInputStatusHuni(value)}
                   required
                 >
                   <SelectTrigger id="status_perkawinan" className="w-full">
@@ -90,7 +90,7 @@ export default function CreatePenghuni() {
               <div className="grid gap-2">
                 <Label htmlFor="status_perkawinan">Status Perkawinan</Label>
                 <Select
-                  onValueChange={(value) => setStatusKawin(value)}
+                  onValueChange={(value) => setInputStausKawin(value)}
                   required
                 >
                   <SelectTrigger id="status_perkawinan" className="w-full">
@@ -121,6 +121,6 @@ export default function CreatePenghuni() {
           </Button>
         </CardFooter>
       </Card>
-    </>
+    </div>
   );
 }
